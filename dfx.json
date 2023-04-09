@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "canisters": {
+    "post_wall_backend": {
+      "type": "rust",
+      "package": "post_wall_backend",
+      "candid": "src/post_wall_backend/post_wall_backend.did"
+    },
+    "post_wall_frontend": {
+      "type": "assets",
+      "source": [
+        "src/post_wall_frontend/assets"
+      ],
+      "dependencies": [
+        "post_wall_backend"
+      ]
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "",
+      "args": ""
+    }
+  }
+}
