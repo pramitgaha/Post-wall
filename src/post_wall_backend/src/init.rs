@@ -2,7 +2,7 @@ use std::cell::RefCell;
 
 use candid::{Principal, candid_method};
 use ic_cdk_macros::*;
-use ic_stable_memory::derive::{AsFixedSizeBytes, StableType};
+use ic_stable_memory::{derive::{AsFixedSizeBytes, StableType}, stable_memory_init};
 use crate::response::UpdateStateResponse;
 
 #[derive(AsFixedSizeBytes, StableType)]
@@ -40,6 +40,7 @@ pub(crate) fn is_this_caller_authority(caller: &Principal) -> bool{
 #[init]
 #[candid_method(init)]
 pub fn init(){
+    stable_memory_init();
     let caller = ic_cdk::caller();
     INIT_DATA.with(|state|{
         let state = &mut state.borrow_mut();
