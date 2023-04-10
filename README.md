@@ -1,6 +1,6 @@
 # post_wall
 
-Welcome to your new post_wall project and to the internet computer development community. By default, creating a new project adds this README and some template files to your project directory. You can edit these template files to customize your project and to include your own code to speed up the development cycle.
+Post Wall is a twitter look-a-like application built on ICP blockchain. It uses [ic-stable-memory](https://github.com/seniorjoinu/ic-stable-memory) to enjoy a larger store of 48GB stable memory (at the time or writing).
 
 To get started, you might want to explore the project directory structure and the default configuration file. Working with this project in your development environment will not affect any production deployment or identity tokens.
 
