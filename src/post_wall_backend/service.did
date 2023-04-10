@@ -1,0 +1,39 @@
+type CreatePostData = record { topic : text; message : text };
+type CreatePostResponse = variant {
+  FailedToAllocateMemory;
+  TopicTooLong;
+  UserNotRegistered;
+  Success;
+  MessageTooLong;
+};
+type Gender = variant { Male; RatherNotToSay; Female };
+type RegistrationData = record {
+  username : text;
+  middle_name : text;
+  gender : Gender;
+  first_name : text;
+  last_name : text;
+  date_of_birth : nat64;
+};
+type RegistrationResponse = variant {
+  FirstNameTooLong;
+  VerificationAmountNotPaid;
+  FailedToAllocateMemory;
+  MiddleNameTooLong;
+  AlreadyRegistered;
+  Success : record { username : text };
+  LastNameTooLong;
+  UserNameTaken;
+};
+type UpdateStateResponse = variant { Success; Unauthorized };
+service : () -> {
+  change_authority : (principal) -> (UpdateStateResponse);
+  create_post : (CreatePostData) -> (CreatePostResponse);
+  query_authority : () -> (principal) query;
+  register_as_business_account : (RegistrationData) -> (RegistrationResponse);
+  register_as_plus_user : (RegistrationData) -> (RegistrationResponse);
+  register_as_regular_user : (RegistrationData) -> (RegistrationResponse);
+  total_number_of_users : () -> (nat) query;
+  update_business_verification_charge : (nat) -> (UpdateStateResponse);
+  update_plus_verification_charge : (nat) -> (UpdateStateResponse);
+}
